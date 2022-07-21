@@ -1,4 +1,4 @@
-#require './lib/headers'
+require './lib/headers'
 require './lib/helpers'
 
 PER_PAGE = 1000
@@ -27,7 +27,6 @@ end
 =end
 
 
-
 products = json["products"]
 
 products.each_with_index do |prod, idx|
@@ -41,8 +40,11 @@ products.each_with_index do |prod, idx|
         is_private_label = (brand =~ /mathem/i) ? false : true
     end
 
+    category_ancestry = prod["categoryAncestry"].reverse
+    cat_id = category_ancestry[0]["id"]
+    cat_name = category_ancestry[0]["name"]
     sub_category_arr = []
-    sub_cat = (prod["categoryAncestry"].reverse)[1..-1]### ini untuk mapping subcat
+    sub_cat = category_ancestry[1..-1].map{|sc| sc["name"]}.join(" > ")### ini untuk mapping subcat
 
     base_price_lc = prod["price"]
     customer_price_lc = prod["discount"]["unitPrice"] rescue base_price_lc
@@ -67,16 +69,18 @@ products.each_with_index do |prod, idx|
     })
 
     dietary = prod["preferences"]["dietary"]
-    labels = prod["preferences"]["labels"]
+    labels = prod["preferences"]["labels"].map{|l| "'#{l["name"]}'"}.join(", ")
     item_attributes = JSON.generate({
         "dietary" => dietary,
         "labels" => labels,
     })
 
     item_identifiers = JSON.generate({
-		"barcode" => "'#{product_id}'",
+		"barcode" => "'#{prod_id}'",
         "gtin" => "'#{prod["gtin"]}'",
 	})
+
+    origin = prod["origin"]["name"] rescue nil
 
     url = "https://www.mathem.se#{prod["url"]}"
 
@@ -95,8 +99,8 @@ products.each_with_index do |prod, idx|
         competitor_product_id: prod_id,
         name: prod_name,
         brand: brand,
-        category_id: vars["cat_id"],
-        category: vars["cat_name"],
+        category_id: cat_id,
+        category: cat_name,
         sub_category: sub_cat,###
         customer_price_lc: customer_price_lc,
         base_price_lc: base_price_lc,
@@ -124,13 +128,16 @@ products.each_with_index do |prod, idx|
         store_reviews: nil,
         item_attributes: item_attributes,
         item_identifiers: item_identifiers,
-        country_of_origin: prod["origin"]["name"],
+        country_of_origin: origin,
         variants: nil,
 	}
 
     pages << {
         page_type: "product",
         url: url,
+        headers: ReqHeaders::HEADERS,
         vars: vars.merge("info" => info),
     }
+
+    break if rank > 19
 end

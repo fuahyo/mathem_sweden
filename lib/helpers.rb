@@ -2,9 +2,6 @@ module GetFunc
     class << self
         def get_uom(x)
         	uom_regex = [
-                /(?<![^\s])(\d*[\.,]?\d+)\s?(克)(?![^\s])/i,
-                /(?<![^\s])(\d*[\.,]?\d+)\s?(毫升)(?![^\s])/i,
-                #
                 /(?<![^\s])(\d*[\.,]?\d+)\s?(litre[s]?)(?![^\s])/i,
                 /(?<![^\s])(\d*[\.,]?\d+)\s?(fl oz)(?![^\s])/i,
                 /(?<![^\s])(\d*[\.,]?\d+)\s?([mcf]?l)(?![^\s])/i,
@@ -27,8 +24,6 @@ module GetFunc
 
         def get_pieces(x)
         	product_pieces_regex = [
-                /(\d+)\s?片(?![^\s])/i,
-                #
                 /(\d+)\s?per\s?pack/i,
                 /(\d+)\s?pack/i,
                 /(\d+)\s?pc[s]?/i,
