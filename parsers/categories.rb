@@ -14,6 +14,7 @@ categories.each do |cat|
     pages << {
         page_type: "listings",
         url: url,
+        priority: 100,
         vars: {
             cat_id: cat_id,
             cat_name: cat_name,
