@@ -1,30 +1,37 @@
 #require './lib/headers'
 require './lib/helpers'
 
+PER_PAGE = 1000
 json = JSON.parse(content)
+vars = page["vars"]
+current_page = vars["page_number"]
 
+prod_count = json["totalFound"]
 
-current_page = page["vars"]["page_number"]
+if (current_page == 1) && (prod_count > PER_PAGE)
+    total_page = (prod_count/PER_PAGE.to_f).ceil
 
-total_page = json["data"]["pageInfo"]["pageCount"]
+    (2..total_page).each do |pn|
+        url = page["url"]
 
-if current_page == 1 && total_page > 1
+        pages << {
+            page_type: "listings",
+            url: url,
+            vars: vars.merge("page_number" => pn),
+        }
+    end
+end
 
-	(2..total_page).each do |pn|
-		body = page["body"].gsub('"pageNum":1', "\"pageNum\":#{pn}")
+products = json["products"]
 
-		pages << {
-			page_type: "listings",
-			url: page["url"],
-			method: "POST",
-            body: body,
-			headers: page["vars"]["headers"],
-			vars: page["vars"].merge("page_number" => pn),
-		}
-	end
+products.each_with_index do |prod, idx|
+    rank = idx+1
+    prod_id = prod
+    prod_name = prod
 end
 
 
+##
 
 products = json["data"]["wareList"]
 
