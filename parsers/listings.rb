@@ -135,7 +135,18 @@ products.each_with_index do |prod, idx|
     pages << {
         page_type: "product",
         url: url,
-        headers: ReqHeaders::HEADERS,
+        http2: true,
+        fetch_type: "browser",
+        driver: {
+            #"code": "await sleep(3000)",
+            "enable_images": false,
+            "stealth": false,
+            "goto_options": {
+                "timeout": 0,
+                "waitUntil": "networkidle0",
+            },
+        },
+        #headers: ReqHeaders::HEADERS,
         vars: vars.merge("info" => info),
     }
 
