@@ -1,7 +1,7 @@
 info = page["vars"]["info"]
 html = Nokogiri.HTML(content)
 
-info["_collection"] = "product"
+info["_collection"] = "products"
 info["_id"] = info["competitor_product_id"]
 info["scraped_at_timestamp"] = Time.now.strftime('%Y-%m-%d %H:%M:%S')
 info["description"] = html.at_css("mathem-product-details-accordion p").text.strip rescue nil
