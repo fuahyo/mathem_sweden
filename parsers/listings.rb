@@ -68,7 +68,7 @@ products.each_with_index do |prod, idx|
         "num_avg_reviews" => avg_reviews,
     })
 
-    dietary = prod["preferences"]["dietary"]
+    dietary = prod["preferences"]["dietary"].map{|d| "'#{d["name"]}'"}.join(", ")
     labels = prod["preferences"]["labels"].map{|l| "'#{l["name"]}'"}.join(", ")
     item_attributes = JSON.generate({
         "dietary" => dietary,
