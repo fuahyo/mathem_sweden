@@ -62,10 +62,10 @@ products.each_with_index do |prod, idx|
     is_available = !prod["stockInformation"]["outOfStock"]
     
     total_reviews = prod["rating"]["votes"].to_i rescue nil
-    avg_reviews = prod["rating"]["avgRating"].to_f rescue nil
+    avg_rating = prod["rating"]["avgRating"].to_f rescue nil
     reviews = JSON.generate({
         "num_total_reviews" => total_reviews,
-        "num_avg_reviews" => avg_reviews,
+        "avg_rating" => avg_rating,
     })
 
     dietary = prod["preferences"]["dietary"].map{|d| "'#{d["name"]}'"}.join(", ")
@@ -77,7 +77,7 @@ products.each_with_index do |prod, idx|
 
     item_identifiers = JSON.generate({
 		"barcode" => "'#{prod_id}'",
-        "gtin" => "'#{prod["gtin"]}'",
+        "GTIN" => "'#{prod["gtin"]}'",
 	})
 
     origin = prod["origin"]["name"] rescue nil

@@ -10,12 +10,12 @@ module GetFunc
                 /(?<![^\s])(\d*[\.,]?\d+)\s?(oz)(?![^\s])/i,
             ]
             uom_regex.find {|ur| x =~ ur}
-            size_std = $1
+            size_std = $1.gsub(",", ".") rescue nil
             size_unit_std = $2
 
             uom = {
-        		size: $1,
-        		unit: $2,
+        		size: size_std,
+        		unit: size_unit_std,
         	}
 
         	return uom
@@ -28,6 +28,9 @@ module GetFunc
                 /(\d+)\s?pack/i,
                 /(\d+)\s?pc[s]?/i,
                 /(\d+)\s?pkt[s]?/i,
+                #
+                /(?<![^\s])(\d+)\s?-\s?p(?![^\s])/i,
+                #
                 /(?<![^\s])(\d+)\s?x\s?\d+/i,
                 /[a-zA-Z]\s?x\s?(\d+)(?![^\s])/i,
                 /(\d+)'?\s?s(?![^\s])/i,
