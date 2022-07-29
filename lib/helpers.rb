@@ -2,20 +2,20 @@ module GetFunc
     class << self
         def get_uom(x)
         	uom_regex = [
-                /(?<![^\s])(\d*[\.,]?\d+)\s?(litre[s]?)(?![^\s])/i,
-                /(?<![^\s])(\d*[\.,]?\d+)\s?(fl oz)(?![^\s])/i,
-                /(?<![^\s])(\d*[\.,]?\d+)\s?([mcf]?l)(?![^\s])/i,
-                /(?<![^\s])(\d*[\.,]?\d+)\s?([mk]?g)(?![^\s])/i,
-                /(?<![^\s])(\d*[\.,]?\d+)\s?([mc]?m)(?![^\s])/i,
-                /(?<![^\s])(\d*[\.,]?\d+)\s?(oz)(?![^\s])/i,
-            ]
-            uom_regex.find {|ur| x =~ ur}
-            size_std = $1.gsub(",", ".") rescue nil
-            size_unit_std = $2
+                /(?<![^\sx])(\d*[\.,]?\d+)\s?(litre[s]?)(?![^\s])/i,
+                /(?<![^\sx])(\d*[\.,]?\d+)\s?(fl oz)(?![^\s])/i,
+                /(?<![^\sx])(\d*[\.,]?\d+)\s?([mcfd]?l)(?![^\s])/i,
+                /(?<![^\sx])(\d*[\.,]?\d+)\s?([mk]?g)(?![^\s])/i,
+                /(?<![^\sx])(\d*[\.,]?\d+)\s?([mc]?m)(?![^\s])/i,
+                /(?<![^\sx])(\d*[\.,]?\d+)\s?(oz)(?![^\s])/i,
+            ].find {|ur| x =~ ur}
+            
+            size = $1
+            unit = $2
 
             uom = {
-        		size: size_std,
-        		unit: size_unit_std,
+        		size: (size.gsub(",", ".") rescue nil),
+        		unit: unit,
         	}
 
         	return uom

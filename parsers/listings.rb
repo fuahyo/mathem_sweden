@@ -59,7 +59,7 @@ products.each_with_index do |prod, idx|
 
     img_check = prod["images"]["ORIGINAL"] rescue nil
     img_url = img_check ? "https:#{img_check}" : nil
-    is_available = !prod["stockInformation"]["outOfStock"]
+    is_available = !prod["stockInformation"]["outOfStock"] rescue false
     
     total_reviews = prod["rating"]["votes"].to_i rescue nil
     avg_rating = prod["rating"]["avgRating"].to_f rescue nil
