@@ -13,7 +13,9 @@ if (current_page == 1) && (prod_count > PER_PAGE)
     total_page = (prod_count/PER_PAGE.to_f).ceil
 
     (2..total_page).each do |pn|
-        url = page["url"]
+        page_index = pn - 1
+        
+        url = page["url"].gsub("index=0", "index=#{page_index}")
 
         pages << {
             page_type: "listings",
