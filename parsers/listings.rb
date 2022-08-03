@@ -8,8 +8,7 @@ current_page = vars["page_number"]
 
 prod_count = json["totalFound"]
 
-# disable pagination for sample run
-=begin
+# pagination
 if (current_page == 1) && (prod_count > PER_PAGE)
     total_page = (prod_count/PER_PAGE.to_f).ceil
 
@@ -24,7 +23,6 @@ if (current_page == 1) && (prod_count > PER_PAGE)
         }
     end
 end
-=end
 
 
 products = json["products"]
@@ -149,6 +147,4 @@ products.each_with_index do |prod, idx|
         #headers: ReqHeaders::HEADERS,
         vars: vars.merge("info" => info),
     }
-
-    break if rank > 19
 end
