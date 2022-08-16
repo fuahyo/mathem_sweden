@@ -13,11 +13,13 @@ info["promo_attributes"] = nil
 
 promo = html.at_css(".product .product-overlay .splash-container").text.strip rescue nil
 if promo
-    info["is_promoted"] = true
-    info["type_of_promotion"] = "badge"
-    info["promo_attributes"] = JSON.generate({
-        "promo_detail" => "'#{promo}'",
-    })
+    unless promo =~ /Snart i lager/i
+        info["is_promoted"] = true
+        info["type_of_promotion"] = "badge"
+        info["promo_attributes"] = JSON.generate({
+            "promo_detail" => "'#{promo}'",
+        })
+    end
 end
 
 outputs << info
