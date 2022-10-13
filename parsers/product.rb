@@ -2,7 +2,7 @@ info = page["vars"]["info"]
 html = Nokogiri.HTML(content)
 
 if content.nil? || html.at_css("h1").nil?
-    raise "failed fetch page, please refetch"
+    raise "failed page, please refetch"
 else
     info["_collection"] = "products"
     info["_id"] = info["competitor_product_id"]
