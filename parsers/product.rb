@@ -1,8 +1,42 @@
+def Refetch_Page(page)
+    refetch_count = page["vars"]["refetch_count"] || 0
+
+    unless refetch_count > 10
+        refetch_count += 1
+
+        pages << {
+            page_type: "product",
+            url: page["url"],
+            http2: true,
+            fetch_type: "browser",
+            driver: {
+                name: "refetch_#{refetch_count}",
+                #"code": "await sleep(3000)",
+                enable_images: false,
+                stealth: false,
+                goto_options: {
+                    timeout: 0,
+                    waitUntil: "networkidle0",
+                },
+            },
+            headers: {
+                "User-Agent" => "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:105.0) Gecko/20100101 Firefox/105.0",
+            },
+            vars: page["vars"].merge("refetch_count" => refetch_count)
+        }
+    else
+        raise "max refetch reached"
+    end
+end
+
+
 info = page["vars"]["info"]
 html = Nokogiri.HTML(content)
 
+
 if content.nil? || html.at_css("h1").nil?
-    raise "failed page, please refetch"
+    #raise "failed page, please refetch"
+    Refetch_Page(page)
 else
     info["_collection"] = "products"
     info["_id"] = info["competitor_product_id"]
