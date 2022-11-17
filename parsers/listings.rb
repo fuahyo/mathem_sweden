@@ -75,9 +75,13 @@ products.each_with_index do |prod, idx|
         "labels" => labels,
     })
 
+    #item_identifiers = JSON.generate({
+	#	"barcode" => "'#{prod_id}'",
+    #    "GTIN" => "'#{prod["gtin"]}'",
+	#})
+
     item_identifiers = JSON.generate({
-		"barcode" => "'#{prod_id}'",
-        "GTIN" => "'#{prod["gtin"]}'",
+		"barcode" => "'#{prod["gtin"]}'",
 	})
 
     origin = prod["origin"]["name"] rescue nil
@@ -113,7 +117,7 @@ products.each_with_index do |prod, idx|
         size_unit_std: size_unit_std,
         #description: nil,
         img_url: img_url,
-        barcode: prod_id,
+        barcode: prod["gtin"],
         sku: nil,
         url: url,
         is_available: is_available,
