@@ -1,5 +1,7 @@
 #require './lib/headers'
 
+#store_id = 10
+store_id = 23
 json = JSON.parse(content)
 
 
@@ -9,7 +11,7 @@ categories.each do |cat|
     cat_id = cat["id"]
     cat_name = cat["title"]
 
-    url = "https://api.mathem.io/product-search/noauth/search/products/10/categorytag/#{cat_id}?size=1000&index=0&storeId=10&badges=&brands=&categories=&supplier=&shop=&searchType=category&sortTerm=popular&sortOrder=desc"
+    url = "https://api.mathem.io/product-search/noauth/search/products/#{store_id}/categorytag/#{cat_id}?size=1000&index=0&storeId=#{store_id}&badges=&brands=&categories=&supplier=&shop=&searchType=category&sortTerm=popular&sortOrder=desc"
 
     pages << {
         page_type: "listings",
