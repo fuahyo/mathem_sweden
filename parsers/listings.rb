@@ -147,7 +147,7 @@ products.each_with_index do |prod, idx|
             "stealth": false,
             "goto_options": {
                 "timeout": 0,
-                "waitUntil": "networkidle0",
+                "waitUntil": "networkidle2",
             },
         },
         #headers: ReqHeaders::HEADERS,
