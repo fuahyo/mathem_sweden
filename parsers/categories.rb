@@ -1,9 +1,8 @@
 #require './lib/headers'
 
-#store_id = 10
-store_id = 23
 json = JSON.parse(content)
-
+vars = page["vars"]
+store_id = vars["store_id"]
 
 categories = json["categories"]
 
@@ -17,10 +16,10 @@ categories.each do |cat|
         page_type: "listings",
         url: url,
         priority: 100,
-        vars: {
-            cat_id: cat_id,
-            cat_name: cat_name,
-            page_number: 1,
-        },
+        vars: vars.merge(
+            "cat_id" => cat_id,
+            "cat_name" => cat_name,
+            "page_number" => 1,
+        )
     }
 end
