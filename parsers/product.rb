@@ -40,13 +40,13 @@ if content.nil? || html.at_css("h1").nil?
 else
     info["_collection"] = "products"
     info["_id"] = info["competitor_product_id"]
-    info["scraped_at_timestamp"] = Time.now.strftime('%Y-%m-%d %H:%M:%S')
     #info["description"] = html.at_css("mathem-product-details-accordion p").text.strip rescue nil
     info["description"] = html.at_css("mathem-product-details-accordion").text.strip rescue nil
 
     info["is_promoted"] = false
     info["type_of_promotion"] = nil
     info["promo_attributes"] = nil
+    info['scraped_at_timestamp'] = (ENV['reparse'] == "1" ? (Time.parse(page['fetched_at']) + 1).strftime('%Y-%m-%d %H:%M:%S') : Time.parse(page['fetched_at']).strftime('%Y-%m-%d %H:%M:%S'))
 
     promo = html.at_css(".product .product-overlay .splash-container").text.strip rescue nil
     if promo
