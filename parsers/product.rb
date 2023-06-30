@@ -46,7 +46,7 @@ else
     info["is_promoted"] = false
     info["type_of_promotion"] = nil
     info["promo_attributes"] = nil
-    info['scraped_at_timestamp'] = (ENV['reparse'] == "1" ? (Time.parse(page['fetched_at']) + 1).strftime('%Y-%m-%d %H:%M:%S') : Time.parse(page['fetched_at']).strftime('%Y-%m-%d %H:%M:%S'))
+    info['scraped_at_timestamp'] = ((ENV['needs_reparse'] == 1 || ENV['needs_reparse'] == "1") ? (Time.parse(page['fetched_at']) + 1).strftime('%Y-%m-%d %H:%M:%S') : Time.parse(page['fetched_at']).strftime('%Y-%m-%d %H:%M:%S'))
 
     promo = html.at_css(".product .product-overlay .splash-container").text.strip rescue nil
     if promo
