@@ -24,8 +24,8 @@ if categories.count > 1
     subcat = categories[1..-1].map{|i| i['name']}.join(" > ")
 end
 
-base_price_lc = json['discount']['undiscounted_gross_price'].to_f
 customer_price_lc = json['gross_price'].to_f
+base_price_lc = json['discount']['undiscounted_gross_price'].to_f rescue customer_price_lc
 has_discount = customer_price_lc < base_price_lc
 discount_percentage = has_discount ? GetFunc::get_discount(base_price_lc, customer_price_lc) : nil
 
