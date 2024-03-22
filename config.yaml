@@ -9,6 +9,9 @@ seeder:
 parsers:
   - page_type: categories
     file: ./parsers/categories.rb
+    disabled: false
+  - page_type: subcategories
+    file: ./parsers/subcategories.rb
     disabled: true
   - page_type: listings
     file: ./parsers/listings.rb
