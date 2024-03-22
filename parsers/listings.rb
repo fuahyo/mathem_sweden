@@ -7,8 +7,8 @@ current_page = vars['page_number']
 json = JSON.parse(content)
 
 # pagination
-if current_page == 1# && (prod_count > PER_PAGE)
-    prod_count = json['sections'].detect{|i| i['active'] == true}['count']
+if current_page == 1
+    prod_count = json['parent_sections'].detect{|i| i['active'] == true}['count']
 
     if prod_count > PER_PAGE
         total_page = (prod_count/PER_PAGE.to_f).ceil
