@@ -12,11 +12,6 @@ subcategories.each do |subcategory|
     subcat_id = subcat['id'].split("-").last.to_s
     subcat_name = subcat['title']
     subcat_slug = subcat['button']['target']['uri'].split("/")[-2] rescue nil
-    
-    # "Frukt- och Grönsakskassar" don't have slug
-    if subcat_slug.nil? && subcat_name != "Frukt- och Grönsakskassar"
-        raise "please check"
-    end
 
     url = "https://www.mathem.se/tienda-web-api/v1/section-listing/categories/#{subcat_id}/#{subcat_id}/?cursor=1&sort=default&filters=&size=24"
 
