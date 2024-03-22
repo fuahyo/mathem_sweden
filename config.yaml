@@ -9,13 +9,13 @@ seeder:
 parsers:
   - page_type: categories
     file: ./parsers/categories.rb
-    disabled: false
+    disabled: true
   - page_type: listings
     file: ./parsers/listings.rb
-    disabled: false
+    disabled: true
   - page_type: product
     file: ./parsers/product.rb
-    disabled: false
+    disabled: true
 
 finisher:
   file: ./finisher/finisher.rb
