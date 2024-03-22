@@ -1,27 +1,34 @@
 #require './lib/headers'
 
+vars = page['vars']
 json = JSON.parse(content)
 
-categories = json['pageProps']['dehydratedState']['queries'].first['state']['data']['blocks'].detect{|i| i['id'] == "All categories"}['items']
-raise "empty categories" if categories.nil? || categories.empty?
+subcategories = json['pageProps']['dehydratedState']['queries'].first['state']['data']['blocks'].select{|i| i['id'] =~ /product-category-section/i}#['items']
+raise "empty subcategories" if subcategories.nil? || subcategories.empty?
 
-categories.each do |category|
-    cat = category['data']
+subcategories.each do |subcategory|
+    subcat = subcategory
 
-    cat_id = cat['id'].to_s
-    cat_name = cat['title']
-    cat_slug = cat['target']['uri'].split("/").last
+    subcat_id = subcat['id'].split("-").last.to_s
+    subcat_name = subcat['title']
+    subcat_slug = subcat['button']['target']['uri'].split("/")[-2] rescue nil
+    
+    # "Frukt- och Grönsakskassar" don't have slug
+    if subcat_slug.nil? && subcat_name != "Frukt- och Grönsakskassar"
+        raise "please check"
+    end
 
-    url = "https://www.mathem.se/_next/data/dea2c15da15af05b352b732c61bdef4559fb0118/se/categories/#{cat_slug}.json?site=se&primaryCategorySlug=#{cat_slug}"
+    url = "https://www.mathem.se/tienda-web-api/v1/section-listing/categories/#{subcat_id}/#{subcat_id}/?cursor=1&sort=default&filters=&size=24"
 
     pages << {
-        page_type: "subcategories",
+        page_type: "listings",
         url: url,
-        priority: 100,
-        vars: {
-            "cat_id" => cat_id,
-            "cat_name" => cat_name,
-            "cat_slug" => cat_slug,
-        }
+        priority: 90,
+        vars: vars.merge(
+            "subcat_id" => subcat_id,
+            "subcat_name" => subcat_name,
+            "subcat_slug" => subcat_slug,
+            "page_number" => 1,
+        )
     }
 end

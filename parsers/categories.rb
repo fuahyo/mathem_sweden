@@ -19,9 +19,9 @@ categories.each do |category|
         url: url,
         priority: 100,
         vars: {
-            "cat_id" => cat_id,
-            "cat_name" => cat_name,
-            "cat_slug" => cat_slug,
+            cat_id: cat_id,
+            cat_name: cat_name,
+            cat_slug: cat_slug,
         }
     }
 end

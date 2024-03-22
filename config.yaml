@@ -12,7 +12,7 @@ parsers:
     disabled: false
   - page_type: subcategories
     file: ./parsers/subcategories.rb
-    disabled: true
+    disabled: false
   - page_type: listings
     file: ./parsers/listings.rb
     disabled: true

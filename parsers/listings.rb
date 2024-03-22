@@ -1,15 +1,15 @@
 require './lib/headers'
 require './lib/helpers'
 
-PER_PAGE = 1000
+PER_PAGE = 24
+vars = page['vars']
+current_page = vars['page_number']
 json = JSON.parse(content)
-vars = page["vars"]
-current_page = vars["page_number"]
 
 prod_count = json["totalFound"]
 
 # pagination
-if (current_page == 1) && (prod_count > PER_PAGE)
+if (current_page == 1)# && (prod_count > PER_PAGE)
     total_page = (prod_count/PER_PAGE.to_f).ceil
 
     (2..total_page).each do |pn|
