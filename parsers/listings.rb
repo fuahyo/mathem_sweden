@@ -6,36 +6,42 @@ vars = page['vars']
 current_page = vars['page_number']
 json = JSON.parse(content)
 
-prod_count = json["totalFound"]
-
 # pagination
-if (current_page == 1)# && (prod_count > PER_PAGE)
-    total_page = (prod_count/PER_PAGE.to_f).ceil
+if current_page == 1# && (prod_count > PER_PAGE)
+    prod_count = json['sections'].detect{|i| i['active'] == true}['count']
 
-    (2..total_page).each do |pn|
-        page_index = pn - 1
-        
-        url = page["url"].gsub("index=0", "index=#{page_index}")
+    if prod_count > PER_PAGE
+        total_page = (prod_count/PER_PAGE.to_f).ceil
 
-        pages << {
-            page_type: "listings",
-            url: url,
-            priority: 100,
-            vars: vars.merge("page_number" => pn),
-        }
+        (2..total_page).each do |pn|        
+            url = page["url"].gsub("cursor=1", "cursor=#{pn}")
+
+            pages << {
+                page_type: "listings",
+                url: url,
+                priority: 80,
+                vars: vars.merge("page_number" => pn),
+            }
+        end
     end
+
+    outputs << {
+        _collection: "first_page",
+        vars: vars,
+        prod_count: prod_count,
+    }
 end
 
 
-products = json["products"]
-
+products = json['items'].map{|i| i['attributes']}
 products.each_with_index do |prod, idx|
     rank = idx+1
-    prod_id = prod["id"]
-    prod_name = prod["fullName"]
+    prod_id = prod['id']
 
+=begin
+    prod_name = prod["name"]
     is_private_label = nil
-    brand = prod["brand"]["name"]
+    brand = prod["brand"]
     unless brand.empty?
         is_private_label = (brand =~ /mathem/i) ? false : true
     end
@@ -131,22 +137,26 @@ products.each_with_index do |prod, idx|
         country_of_origin: origin,
         variants: nil,
 	}
+=end
+    url = "https://www.mathem.se/tienda-web-api/v1/products/#{prod_id}/"
 
     pages << {
-        page_type: "product",
+        page_type: "product_api",
         url: url,
         http2: true,
-        fetch_type: "browser",
-        driver: {
-            #"code": "await sleep(3000)",
-            "enable_images": false,
-            "stealth": false,
-            "goto_options": {
-                "timeout": 0,
-                "waitUntil": "networkidle2",
-            },
-        },
+        priority: 70,
+        #fetch_type: "browser",
+        #driver: {
+        #    #"code": "await sleep(3000)",
+        #    "enable_images": false,
+        #    "stealth": false,
+        #    "goto_options": {
+        #        "timeout": 0,
+        #        "waitUntil": "networkidle2",
+        #    },
+        #},
         #headers: ReqHeaders::HEADERS,
-        vars: vars.merge("info" => info),
+        #vars: vars.merge("info" => info),
+        vars: vars.merge('rank' => rank)
     }
 end
