@@ -9,6 +9,8 @@ json = JSON.parse(content)
 prod_id = json['id'].to_s
 prod_name = json['name']
 
+name_extra = json['name_extra']
+
 is_private_label = nil
 brand = json['brand']
 unless brand.empty?
@@ -30,10 +32,18 @@ has_discount = customer_price_lc < base_price_lc
 discount_percentage = has_discount ? GetFunc::get_discount(base_price_lc, customer_price_lc) : nil
 
 prod_pieces = GetFunc::get_pieces(prod_name)
+if prod_pieces == 1
+    prod_pieces = GetFunc::get_pieces(name_extra)
+end
 
 uom = GetFunc::get_uom(prod_name)
 size_std = uom[:size]
 size_unit_std = uom[:unit]
+if size_std.nil? && size_unit_std.nil?
+    uom = GetFunc::get_uom(name_extra)
+    size_std = uom[:size]
+    size_unit_std = uom[:unit]
+end
 
 description = json['detailed_info']['local'].first['short_description']
 img_url = json['images'].first['thumbnail']['url']
@@ -68,18 +78,27 @@ end
 #})
 reviews = nil
 
-#dietary = prod["preferences"]["dietary"].map{|d| "'#{d["name"]}'"}.join(", ")
+
+item_attributes = nil
+item_attributes_check = json['client_classifiers']
+if item_attributes_check.count > 0
+    dietaries = item_attributes_check.map{|i| "'#{i['name'].strip}'"}.join(", ")
+    item_attributes = JSON.generate({
+        "dietary attributes" => dietaries,
+    })
+end
 #labels = prod["preferences"]["labels"].map{|l| "'#{l["name"]}'"}.join(", ")
 #item_attributes = JSON.generate({
 #    "dietary" => dietary,
 #    "labels" => labels,
 #})
-item_attributes = nil
 
 #item_identifiers = JSON.generate({
 #	"barcode" => "'#{prod["gtin"]}'",
 #})
 item_identifiers = nil
+
+country_of_origin = json['detailed_info']['local'].first['contents_table']['rows'].detect{|i| i['key'] == "Ursprungsregion"}['value'] rescue nil
 
 url = json['front_url']
 
@@ -128,7 +147,7 @@ outputs << {
     store_reviews: nil,
     item_attributes: item_attributes,
     item_identifiers: item_identifiers,
-    country_of_origin: nil,
+    country_of_origin: country_of_origin,
     variants: nil,
 }
 
