@@ -1,21 +1,12 @@
-=begin
 #require './lib/headers'
 
-#store_id = 10
-store_id = 23
+idk = "8a226f4b7c771fb532b30d4e8131e877f3ceb953" #don't know what this is
 
 pages << {
 	page_type: "categories",
-	url: "https://api.mathem.io/ecom-navigation/noauth/v3/menu/#{store_id}",
+	url: "https://www.mathem.se/_next/data/#{idk}/se/products.json?site=se",
 	#headers: ReqHeaders::HEADERS,
 	vars: {
-		store_id: store_id,
+		idk: idk,
 	}
-}
-=end
-
-pages << {
-	page_type: "categories",
-	url: "https://www.mathem.se/_next/data/dea2c15da15af05b352b732c61bdef4559fb0118/se/products.json?site=se",
-	#headers: ReqHeaders::HEADERS,
 }
