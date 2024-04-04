@@ -1,6 +1,6 @@
 #require './lib/headers'
 
-idk = "8a226f4b7c771fb532b30d4e8131e877f3ceb953" #don't know what this is
+idk = "4b6065a2dc3cf63c987bede1d1038ed29855e4b2" #don't know what this is, but always need update
 
 pages << {
 	page_type: "categories",
