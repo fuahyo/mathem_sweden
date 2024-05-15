@@ -9,22 +9,19 @@ seeder:
 parsers:
   - page_type: init
     file: ./parsers/init.rb
-    disabled: true
+    disabled: false
   - page_type: categories
     file: ./parsers/categories.rb
-    disabled: true
+    disabled: false
   - page_type: subcategories
     file: ./parsers/subcategories.rb
-    disabled: true
+    disabled: false
   - page_type: listings
     file: ./parsers/listings.rb
-    disabled: true
+    disabled: false
   - page_type: product_api
     file: ./parsers/product_api.rb
-    disabled: true
-  - page_type: product
-    file: ./parsers/product.rb
-    disabled: true
+    disabled: false
 
 finisher:
   file: ./finisher/finisher.rb

@@ -1,7 +1,7 @@
 #require './lib/headers'
 
 vars = page['vars']
-idk = vars['idk']
+build_id = vars['build_id']
 json = JSON.parse(content)
 
 categories = json['pageProps']['dehydratedState']['queries'].first['state']['data']['blocks'].detect{|i| i['id'] == "All categories"}['items']
@@ -14,7 +14,7 @@ categories.each do |category|
     cat_name = cat['title']
     cat_slug = cat['target']['uri'].split("/").last
 
-    url = "https://www.mathem.se/_next/data/#{idk}/se/categories/#{cat_slug}.json?site=se&primaryCategorySlug=#{cat_slug}"
+    url = "https://www.mathem.se/_next/data/#{build_id}/se/categories/#{cat_slug}.json?site=se&primaryCategorySlug=#{cat_slug}"
 
     pages << {
         page_type: "subcategories",

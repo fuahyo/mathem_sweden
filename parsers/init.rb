@@ -1,12 +1,16 @@
 #require './lib/headers'
 
-idk = "f0cd8e68bd08433f1bad23a56af8c38f63c8ceb0" #don't know what this is, but always need update
+html = Nokogiri.HTML(content)
+script_text = html.at_css('body > script#__NEXT_DATA__').text.strip
+json = JSON.parse(script_text)
+
+build_id = json['buildId']
 
 pages << {
 	page_type: "categories",
-	url: "https://www.mathem.se/_next/data/#{idk}/se/products.json?site=se",
+	url: "https://www.mathem.se/_next/data/#{build_id}/se/products.json?site=se",
 	#headers: ReqHeaders::HEADERS,
 	vars: {
-		idk: idk,
+		build_id: build_id,
 	}
 }
