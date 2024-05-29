@@ -18,6 +18,9 @@ unless brand.empty?
 end
 
 categories = json['categories'].first['parents']
+last_subcat = json['categories'].first.select{|k, v| ['id', 'name', 'uri'].include?(k)}
+categories.append(last_subcat)
+
 cat_id = categories.first['id'].to_s
 cat_name = categories.first['name']
 
