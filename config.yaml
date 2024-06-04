@@ -13,15 +13,15 @@ parsers:
   - page_type: categories
     file: ./parsers/categories.rb
     disabled: false
-  # - page_type: subcategories
-  #   file: ./parsers/subcategories.rb
-  #   disabled: false
-  # - page_type: listings
-  #   file: ./parsers/listings.rb
-  #   disabled: false
-  # - page_type: product_api
-  #   file: ./parsers/product_api.rb
-  #   disabled: false
+  - page_type: subcategories
+    file: ./parsers/subcategories.rb
+    disabled: false
+  - page_type: listings
+    file: ./parsers/listings.rb
+    disabled: false
+  - page_type: product_api
+    file: ./parsers/product_api.rb
+    disabled: false
 
 # finisher:
 #   file: ./finisher/finisher.rb

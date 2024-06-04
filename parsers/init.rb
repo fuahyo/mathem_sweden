@@ -2,7 +2,14 @@
 
 html = Nokogiri.HTML(content)
 script_text = html.at_css('body > script#__NEXT_DATA__').text.strip
+File.open("jobs123.json","w") do |f|
+    f.write(JSON.pretty_generate(script_text))
+end
 json = JSON.parse(script_text)
+File.open("jobs1234.json","w") do |f|
+    f.write(JSON.pretty_generate(json))
+end
+
 
 build_id = json['buildId']
 

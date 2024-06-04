@@ -2,8 +2,11 @@
 
 vars = page['vars']
 build_id = vars['build_id']
+puts build_id
 json = JSON.parse(content)
-
+File.open("jobs12.json","w") do |f|
+    f.write(JSON.pretty_generate(json))
+end
 categories = json['pageProps']['dehydratedState']['queries'].first['state']['data']['blocks'].detect{|i| i['id'] == "All categories"}['items']
 raise "empty categories" if categories.nil? || categories.empty?
 
@@ -26,4 +29,8 @@ categories.each do |category|
             "cat_slug" => cat_slug,
         )
     }
+end
+
+File.open("jobs1212.json","w") do |f|
+    f.write(JSON.pretty_generate(pages))
 end

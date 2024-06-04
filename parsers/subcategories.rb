@@ -5,7 +5,7 @@ json = JSON.parse(content)
 
 subcategories = json['pageProps']['dehydratedState']['queries'].first['state']['data']['blocks'].select{|i| i['id'] =~ /product-category-section/i}#['items']
 raise "empty subcategories" if subcategories.nil? || subcategories.empty?
-
+puts subcategories
 subcategories.each do |subcategory|
     subcat = subcategory
 
@@ -26,4 +26,5 @@ subcategories.each do |subcategory|
             "page_number" => 1,
         )
     }
+
 end

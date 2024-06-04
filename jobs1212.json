@@ -1,0 +1,167 @@
+[
+  {
+    "page_type": "subcategories",
+    "url": "https://www.mathem.se/_next/data/ee52f5c5667067da7e7abbf076f3fcd70d79e9f5/se/categories/1-frukt-gront.json?site=se&primaryCategorySlug=1-frukt-gront",
+    "priority": 100,
+    "vars": {
+      "build_id": "ee52f5c5667067da7e7abbf076f3fcd70d79e9f5",
+      "cat_id": "1",
+      "cat_name": "Frukt & grönt",
+      "cat_slug": "1-frukt-gront"
+    }
+  },
+  {
+    "page_type": "subcategories",
+    "url": "https://www.mathem.se/_next/data/ee52f5c5667067da7e7abbf076f3fcd70d79e9f5/se/categories/78-mejeri-ost-juice.json?site=se&primaryCategorySlug=78-mejeri-ost-juice",
+    "priority": 100,
+    "vars": {
+      "build_id": "ee52f5c5667067da7e7abbf076f3fcd70d79e9f5",
+      "cat_id": "78",
+      "cat_name": "Mejeri, ost & juice",
+      "cat_slug": "78-mejeri-ost-juice"
+    }
+  },
+  {
+    "page_type": "subcategories",
+    "url": "https://www.mathem.se/_next/data/ee52f5c5667067da7e7abbf076f3fcd70d79e9f5/se/categories/155-brod-bageri.json?site=se&primaryCategorySlug=155-brod-bageri",
+    "priority": 100,
+    "vars": {
+      "build_id": "ee52f5c5667067da7e7abbf076f3fcd70d79e9f5",
+      "cat_id": "155",
+      "cat_name": "Bröd & bageri",
+      "cat_slug": "155-brod-bageri"
+    }
+  },
+  {
+    "page_type": "subcategories",
+    "url": "https://www.mathem.se/_next/data/ee52f5c5667067da7e7abbf076f3fcd70d79e9f5/se/categories/199-kott-chark.json?site=se&primaryCategorySlug=199-kott-chark",
+    "priority": 100,
+    "vars": {
+      "build_id": "ee52f5c5667067da7e7abbf076f3fcd70d79e9f5",
+      "cat_id": "199",
+      "cat_name": "Kött & chark",
+      "cat_slug": "199-kott-chark"
+    }
+  },
+  {
+    "page_type": "subcategories",
+    "url": "https://www.mathem.se/_next/data/ee52f5c5667067da7e7abbf076f3fcd70d79e9f5/se/categories/264-dryck.json?site=se&primaryCategorySlug=264-dryck",
+    "priority": 100,
+    "vars": {
+      "build_id": "ee52f5c5667067da7e7abbf076f3fcd70d79e9f5",
+      "cat_id": "264",
+      "cat_name": "Dryck",
+      "cat_slug": "264-dryck"
+    }
+  },
+  {
+    "page_type": "subcategories",
+    "url": "https://www.mathem.se/_next/data/ee52f5c5667067da7e7abbf076f3fcd70d79e9f5/se/categories/329-skafferi.json?site=se&primaryCategorySlug=329-skafferi",
+    "priority": 100,
+    "vars": {
+      "build_id": "ee52f5c5667067da7e7abbf076f3fcd70d79e9f5",
+      "cat_id": "329",
+      "cat_name": "Skafferi",
+      "cat_slug": "329-skafferi"
+    }
+  },
+  {
+    "page_type": "subcategories",
+    "url": "https://www.mathem.se/_next/data/ee52f5c5667067da7e7abbf076f3fcd70d79e9f5/se/categories/420-fisk-skaldjur.json?site=se&primaryCategorySlug=420-fisk-skaldjur",
+    "priority": 100,
+    "vars": {
+      "build_id": "ee52f5c5667067da7e7abbf076f3fcd70d79e9f5",
+      "cat_id": "420",
+      "cat_name": "Fisk & skaldjur",
+      "cat_slug": "420-fisk-skaldjur"
+    }
+  },
+  {
+    "page_type": "subcategories",
+    "url": "https://www.mathem.se/_next/data/ee52f5c5667067da7e7abbf076f3fcd70d79e9f5/se/categories/466-hem-hushall.json?site=se&primaryCategorySlug=466-hem-hushall",
+    "priority": 100,
+    "vars": {
+      "build_id": "ee52f5c5667067da7e7abbf076f3fcd70d79e9f5",
+      "cat_id": "466",
+      "cat_name": "Hem & hushåll",
+      "cat_slug": "466-hem-hushall"
+    }
+  },
+  {
+    "page_type": "subcategories",
+    "url": "https://www.mathem.se/_next/data/ee52f5c5667067da7e7abbf076f3fcd70d79e9f5/se/categories/575-fardigmat-mellanmal.json?site=se&primaryCategorySlug=575-fardigmat-mellanmal",
+    "priority": 100,
+    "vars": {
+      "build_id": "ee52f5c5667067da7e7abbf076f3fcd70d79e9f5",
+      "cat_id": "575",
+      "cat_name": "Färdigmat & mellanmål",
+      "cat_slug": "575-fardigmat-mellanmal"
+    }
+  },
+  {
+    "page_type": "subcategories",
+    "url": "https://www.mathem.se/_next/data/ee52f5c5667067da7e7abbf076f3fcd70d79e9f5/se/categories/630-glass-godis-snacks.json?site=se&primaryCategorySlug=630-glass-godis-snacks",
+    "priority": 100,
+    "vars": {
+      "build_id": "ee52f5c5667067da7e7abbf076f3fcd70d79e9f5",
+      "cat_id": "630",
+      "cat_name": "Glass, godis & snacks",
+      "cat_slug": "630-glass-godis-snacks"
+    }
+  },
+  {
+    "page_type": "subcategories",
+    "url": "https://www.mathem.se/_next/data/ee52f5c5667067da7e7abbf076f3fcd70d79e9f5/se/categories/663-barnmat-tillbehor.json?site=se&primaryCategorySlug=663-barnmat-tillbehor",
+    "priority": 100,
+    "vars": {
+      "build_id": "ee52f5c5667067da7e7abbf076f3fcd70d79e9f5",
+      "cat_id": "663",
+      "cat_name": "Barnmat & tillbehör",
+      "cat_slug": "663-barnmat-tillbehor"
+    }
+  },
+  {
+    "page_type": "subcategories",
+    "url": "https://www.mathem.se/_next/data/ee52f5c5667067da7e7abbf076f3fcd70d79e9f5/se/categories/693-apotek-hygien-halsa.json?site=se&primaryCategorySlug=693-apotek-hygien-halsa",
+    "priority": 100,
+    "vars": {
+      "build_id": "ee52f5c5667067da7e7abbf076f3fcd70d79e9f5",
+      "cat_id": "693",
+      "cat_name": "Apotek, hygien & hälsa",
+      "cat_slug": "693-apotek-hygien-halsa"
+    }
+  },
+  {
+    "page_type": "subcategories",
+    "url": "https://www.mathem.se/_next/data/ee52f5c5667067da7e7abbf076f3fcd70d79e9f5/se/categories/783-kryddor-smaksattare.json?site=se&primaryCategorySlug=783-kryddor-smaksattare",
+    "priority": 100,
+    "vars": {
+      "build_id": "ee52f5c5667067da7e7abbf076f3fcd70d79e9f5",
+      "cat_id": "783",
+      "cat_name": "Kryddor & smaksättare",
+      "cat_slug": "783-kryddor-smaksattare"
+    }
+  },
+  {
+    "page_type": "subcategories",
+    "url": "https://www.mathem.se/_next/data/ee52f5c5667067da7e7abbf076f3fcd70d79e9f5/se/categories/872-djurmat-tillbehor.json?site=se&primaryCategorySlug=872-djurmat-tillbehor",
+    "priority": 100,
+    "vars": {
+      "build_id": "ee52f5c5667067da7e7abbf076f3fcd70d79e9f5",
+      "cat_id": "872",
+      "cat_name": "Djurmat & tillbehör",
+      "cat_slug": "872-djurmat-tillbehor"
+    }
+  },
+  {
+    "page_type": "subcategories",
+    "url": "https://www.mathem.se/_next/data/ee52f5c5667067da7e7abbf076f3fcd70d79e9f5/se/categories/892-kiosk-tidningar.json?site=se&primaryCategorySlug=892-kiosk-tidningar",
+    "priority": 100,
+    "vars": {
+      "build_id": "ee52f5c5667067da7e7abbf076f3fcd70d79e9f5",
+      "cat_id": "892",
+      "cat_name": "Kiosk & tidningar",
+      "cat_slug": "892-kiosk-tidningar"
+    }
+  }
+]
